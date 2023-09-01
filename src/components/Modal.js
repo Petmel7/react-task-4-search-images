@@ -1,48 +1,47 @@
-import { Component } from "react";
-//! Для модалкі замість z-index в react
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
-//! Для модалкі замість z-index в react
+
 const modalRoot = document.querySelector('#modal-root');
 
-export default class Modal extends Component {
+export default function Modal({ onClose, children }) {
 
-    componentDidMount() {
-        console.log('Modal componentDidMount')
+    useEffect(() => {
+        // console.log('Modal componentDidMount')
 
-        this.handleKeyDown = (e) => {
+        const handleKeyDown = (e) => {
             if (e.code === 'Escape') {
                 console.log('ESC')
-                this.props.onClose();
+                onClose();
             }
         }
-        window.addEventListener('keydown', this.handleKeyDown)
-    }
 
-    componentWillUnmount() {
-        console.log('Modal componentWillUnmount');
-        window.removeEventListener('keydown', this.handleKeyDown);
-}
+        window.addEventListener('keydown', handleKeyDown);
 
-    handleBackdropClick = event => {
-        console.log('Клікнули в бекдроп')
-        console.log(event.currentTarget)
-        console.log(event.target)
+        return () => {
+            // console.log('Modal componentWillUnmount');
+
+            window.removeEventListener('keydown', handleKeyDown);
+        }
+    }, [onClose]);
+
+    const handleBackdropClick = event => {
+        // console.log('Клікнули в бекдроп')
+        // console.log(event.currentTarget)
+        // console.log(event.target)
 
         if (event.currentTarget === event.target) {
-            this.props.onClose()
-        }
-    }
+            onClose();
+        };
+    };
     
-    render() {
-        return createPortal (
-            <div className="Overlay"
-                onClick={this.handleBackdropClick}>
+    return createPortal(
+        <div className="Overlay"
+            onClick={handleBackdropClick}>
                 
-                <div className="Modal">
-                    {this.props.children}
-                </div>
-            </div>,
-            modalRoot
-        )
-    }
-}
+            <div className="Modal">
+                {children}
+            </div>
+        </div>,
+        modalRoot
+    );
+};

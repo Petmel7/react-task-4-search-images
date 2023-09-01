@@ -65,3 +65,42 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+// useEffect(() => {
+//         console.log('Modal componentDidMount')
+
+//         const handleKeyDown = (e) => {
+//             if (e.code === 'Escape') {
+//                 console.log('ESC')
+//                 this.props.onClose();
+//             }
+//         }
+//         window.addEventListener('keydown', handleKeyDown)
+    
+//     }, [])
+        
+
+//     useEffect(() => {
+//         console.log('Modal componentWillUnmount');
+//         window.removeEventListener('keydown', handleKeyDown);
+//     }, []);
+
+
+//     componentDidMount() {
+//         console.log('Modal componentDidMount')
+
+//         this.handleKeyDown = (e) => {
+//             if (e.code === 'Escape') {
+//                 console.log('ESC')
+//                 this.props.onClose();
+//             }
+//         }
+//         window.addEventListener('keydown', this.handleKeyDown)
+//     }
+
+//     componentWillUnmount() {
+//         console.log('Modal componentWillUnmount');
+//         window.removeEventListener('keydown', this.handleKeyDown);
+// }

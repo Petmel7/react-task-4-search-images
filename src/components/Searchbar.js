@@ -1,37 +1,31 @@
-import { Component } from "react";
+import { useState } from "react";
 import { toast } from 'react-toastify';
 import { ImSearch } from "react-icons/im";
 
-export default class Searchbar extends Component {
+export default function Searchbar({ handleFormSubmit, handleKeyPress }) {
+    const [SearchImage, setSearchImage] = useState('');
 
-    state = {
-        SearchImage: '',
-    }
-    
-    handleNameChnge = event => {
-        this.setState({ SearchImage: event.currentTarget.value.toLowerCase() });
+    const handleNameChnge = event => {
+        setSearchImage(event.currentTarget.value.toLowerCase());
     }
 
-    handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
 
-        if (this.state.SearchImage.trim() === '') {
+        if (SearchImage.trim() === '') {
             toast('Введіть щось у пошук')
             return;
         }
 
-        this.props.handleFormSubmit(this.state.SearchImage);
-        this.setState({ SearchImage: '' });
+        handleFormSubmit(SearchImage);
+        setSearchImage('');
     }
 
-    render() {
-        const { handleKeyPress } = this.props;
-
-        return (
-            <header className="Searchbar">
-            <form className="SearchForm" onSubmit={this.handleSubmit}>
+    return (
+        <header className="Searchbar">
+            <form className="SearchForm" onSubmit={handleSubmit}>
                 <button type="submit" className="SearchForm-button">
-                        <ImSearch className="SearchForm-icon"/>
+                    <ImSearch className="SearchForm-icon" />
                 </button>
 
                 <input
@@ -40,12 +34,11 @@ export default class Searchbar extends Component {
                     autoComplete="off"
                     autoFocus
                     placeholder="Search images and photos"
-                        value={this.state.SearchImage}
-                        onChange={this.handleNameChnge}
-                        onKeyPress={handleKeyPress}
-                    />
+                    value={SearchImage}
+                    onChange={handleNameChnge}
+                    onKeyPress={handleKeyPress}
+                />
             </form>
         </header>
-        )
-    }
-}
+    );
+};
