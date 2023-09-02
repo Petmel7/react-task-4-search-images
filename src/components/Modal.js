@@ -6,7 +6,6 @@ const modalRoot = document.querySelector('#modal-root');
 export default function Modal({ onClose, children }) {
 
     useEffect(() => {
-        // console.log('Modal componentDidMount')
 
         const handleKeyDown = (e) => {
             if (e.code === 'Escape') {
@@ -18,7 +17,6 @@ export default function Modal({ onClose, children }) {
         window.addEventListener('keydown', handleKeyDown);
 
         return () => {
-            // console.log('Modal componentWillUnmount');
 
             window.removeEventListener('keydown', handleKeyDown);
         }

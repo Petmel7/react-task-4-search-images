@@ -39,18 +39,18 @@ function App() {
         SearchImage={SearchImage}
         onClick={toggleModal} />
         
-        {showModal && (
+      {showModal && (
         <Modal onClose={toggleModal}>
           
           <div>
-              <button type='button'
-                onClick={toggleModal}>X</button>
+            <button type='button'
+              onClick={toggleModal}>X</button>
           </div>
       
-              <img src={imageUrl} alt="Selected" />
+          <img src={imageUrl} alt="Selected" />
           
-          </Modal>
-        )}
+        </Modal>
+      )}
     </div>
   );
 };
