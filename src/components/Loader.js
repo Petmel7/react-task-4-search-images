@@ -1,6 +1,6 @@
 import { ImSpinner } from "react-icons/im"
-// import PokemonDataViev from "./PokemonDataViev"
-// import pendingImage from './pokemonImage/panding.png';
+import LoaderData from "./LoaderData.js";
+import pendingImage from './images/panding.png';
 
 const styles = {
   spinner: {
@@ -10,13 +10,13 @@ const styles = {
   },
 };
 
-export default function PokemonPendingViev({ SearchImage }) {
-    const pokemon = {
+export default function Loader({ SearchImage }) {
+    const image = {
         name: SearchImage,
         sprites: {
             other: {
                 'official-artwork': {
-                    // front_default: pendingImage,
+                    front_default: pendingImage,
                 },
             },
         },
@@ -26,9 +26,9 @@ export default function PokemonPendingViev({ SearchImage }) {
         <div role="alert">
             <div style={styles.spinner}>
                 <ImSpinner size='32' className="icon-spin" />
-                Завантажуєм...
+                Load...
             </div>
-            {/* <PokemonDataViev pokemon={pokemon}/> */}
+            <LoaderData image={image} />
         </div>
     )
 }

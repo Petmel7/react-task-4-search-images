@@ -1,58 +1,50 @@
 
 import './App.css';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Component } from 'react';
+import { ToastContainer } from 'react-toastify';
+import { useState } from 'react';
 import Searchbar from './components/Searchbar.js';
 import Modal from './components/Modal.js';
 import FetchApi from './components/FetchApi.js';
 
-class App extends Component {
+function App() {
+  const [showModal, setShowModal] = useState(false)
+  const [SearchImage, setSearchImage] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
 
-  state = {
-    showModal: false,
-    SearchImage: '',
-    imageUrl: '',
+  const handleFormSubmit = SearchImage => {
+    setSearchImage(SearchImage);
   }
 
-  handleFormSubmit = SearchImage => {
-    this.setState({ SearchImage });
-  }
+  const toggleModal = imageUrl => {
+    setShowModal(!showModal)
+    setImageUrl(imageUrl)
+  };
 
-  toggleModal = imageUrl => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
-      imageUrl: imageUrl,
-    }))
-  }
-
-  handleKeyPress = (event) => {
+  const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      this.handleFormSubmit(this.state.SearchImage);
+      handleFormSubmit(SearchImage);
     }
-  }
-
-  render() {
-    const { showModal, imageUrl } = this.state;
+  };
 
   return (
     <div className="App">
       <Searchbar
-        handleFormSubmit={this.handleFormSubmit}
-        handleKeyPress={this.handleKeyPress} />
+        handleFormSubmit={handleFormSubmit}
+        handleKeyPress={handleKeyPress} />
       
       <ToastContainer autoClose={3000} />
 
       <FetchApi
-        SearchImage={this.state.SearchImage}
-        onClick={this.toggleModal} />
+        SearchImage={SearchImage}
+        onClick={toggleModal} />
         
         {showModal && (
-        <Modal onClose={this.toggleModal}>
+        <Modal onClose={toggleModal}>
           
           <div>
               <button type='button'
-                onClick={this.toggleModal}>X</button>
+                onClick={toggleModal}>X</button>
           </div>
       
               <img src={imageUrl} alt="Selected" />
@@ -61,46 +53,6 @@ class App extends Component {
         )}
     </div>
   );
-  }
-}
+};
 
 export default App;
-
-
-
-// useEffect(() => {
-//         console.log('Modal componentDidMount')
-
-//         const handleKeyDown = (e) => {
-//             if (e.code === 'Escape') {
-//                 console.log('ESC')
-//                 this.props.onClose();
-//             }
-//         }
-//         window.addEventListener('keydown', handleKeyDown)
-    
-//     }, [])
-        
-
-//     useEffect(() => {
-//         console.log('Modal componentWillUnmount');
-//         window.removeEventListener('keydown', handleKeyDown);
-//     }, []);
-
-
-//     componentDidMount() {
-//         console.log('Modal componentDidMount')
-
-//         this.handleKeyDown = (e) => {
-//             if (e.code === 'Escape') {
-//                 console.log('ESC')
-//                 this.props.onClose();
-//             }
-//         }
-//         window.addEventListener('keydown', this.handleKeyDown)
-//     }
-
-//     componentWillUnmount() {
-//         console.log('Modal componentWillUnmount');
-//         window.removeEventListener('keydown', this.handleKeyDown);
-// }
