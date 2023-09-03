@@ -32,7 +32,7 @@ h2 {
 }
 
 /*
- * Стили компонента App
+ * Стилі компонента App
  */
 .App {
   display: grid;
@@ -42,7 +42,7 @@ h2 {
 }
 
 /*
- * Стили компонента Searchbar
+ * Стилі компонента Searchbar
  */
 .Searchbar {
   top: 0;
@@ -64,7 +64,7 @@ h2 {
 }
 
 /*
- * Стили компонента SearchForm
+ * Стилі компонента SearchForm
  */
 .SearchForm {
   display: flex;
@@ -78,13 +78,9 @@ h2 {
 
 .SearchForm-button {
   display: inline-block;
-  /* width: 48px;
-  height: 48px; */
   margin: 0;
   padding: 7px 10px;
   border: 0;
-  /* background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg'); */
-  background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.6;
@@ -139,7 +135,7 @@ h2 {
 }
 
 /*
- * Стили компонента ImageGallery
+ * Стилі компонента ImageGallery
  */
 .ImageGallery {
   display: grid;
@@ -155,7 +151,7 @@ h2 {
 }
 
 /*
- * Стили компонента ImageGalleryItem
+ * Стилі компонента ImageGalleryItem
  */
 .ImageGalleryItem {
   border-radius: 2px;
@@ -176,7 +172,7 @@ h2 {
 }
 
 /*
- * Стили компонента Modal
+ * Стилі компонента Modal
  */
 
 .Overlay {
@@ -189,7 +185,6 @@ h2 {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
-  /* z-index: 1200; */
 }
 
 .Modal {
@@ -198,7 +193,7 @@ h2 {
 }
 
 /*
-* Стили компонента Buton (Load more)
+* Стилі компонента Buton (Load more)
 */
 .Button {
   text-align: center;
@@ -228,4 +223,45 @@ h2 {
 .Button-more:hover,
 .Button-more:focus {
   background-color: #303f9f;
+}
+
+/* Стилі для Spinner */
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: rgb(145, 145, 145);
+}
+
+.spinning-icon {
+  font-size: 48px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinning-text {
+    font-size: 30px;
+}
+
+/* Стилі для errorImage */
+
+.errorImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
