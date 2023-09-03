@@ -3,6 +3,7 @@ import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { useState } from 'react';
+import { ImCross } from "react-icons/im";
 import Searchbar from './components/Searchbar.js';
 import Modal from './components/Modal.js';
 import FetchApi from './components/FetchApi.js';
@@ -43,8 +44,11 @@ function App() {
         <Modal onClose={toggleModal}>
           
           <div>
-            <button type='button'
-              onClick={toggleModal}>X</button>
+            <button className='buttonCross'
+              type='button'
+              onClick={toggleModal} >
+              <ImCross />
+              </button>
           </div>
       
           <img src={imageUrl} alt="Selected" />

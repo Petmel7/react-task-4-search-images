@@ -1,5 +1,4 @@
 export default function LoaderData({ image: { sprites, name, stats } }) {
-    // console.log(stats)
     return (
         <div>
             <img

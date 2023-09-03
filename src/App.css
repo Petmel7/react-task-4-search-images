@@ -108,14 +108,17 @@ h2 {
 .SearchForm-icon {
   padding: 0;
   margin: 0;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   fill: #333;
   transition: fill 0.3s ease;
+  position: relative;
+    top: 5px;
+    left: 3px;
 }
 
 .SearchForm-icon:hover {
-  fill: #ff9900;
+  fill: #ff0000;;
 }
 
 .SearchForm-input {
@@ -265,3 +268,27 @@ h2 {
     justify-content: center;
     height: 100vh;
 }
+
+/* Стилі для buttonCross */
+
+.buttonCross {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #838383;
+  padding: 0;
+  margin: 0;
+  transition: color 0.2s ease-in-out;
+  float: right;
+}
+
+.buttonCross:hover {
+  color: #ff0000;
+}
+
+/*  */
+
+/* #SearchImage {
+  font-size: 50px;
+} */

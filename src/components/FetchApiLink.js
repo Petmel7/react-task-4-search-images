@@ -1,4 +1,11 @@
-export default function FetchApiLink({ name, page, setError, setStatus, setImages }) {
+
+export default function FetchApiLink({
+    name,
+    page,
+    setError,
+    setStatus,
+    setImages }) {
+    
     return (
         fetch(`https://pixabay.com/api/?q=${name}&page=${page}&key=22926721-5d20aa08498ffd1ff2f906542&image_type=photo&orientation=horizontal&per_page=12`)
             .then(response => {
